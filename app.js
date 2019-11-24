@@ -358,6 +358,7 @@ class Player {
                 coins.splice(c,1);
                 addCoins();
                 this.timer = 200;
+
                 frameRate(60);
                 return true;
             }
