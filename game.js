@@ -1,13 +1,13 @@
 var keymove = [false,false,false,false];
 
 class Game{
-    constructor(start_x,start_y){
+    constructor(start_x,start_y,running){
         this.maze = [];
         this.maze = createMaze(this.maze,start_x,start_y);
         this.coins = [];
         this.coins = createCoins(this.coins, this.maze);
         this.player = new Player(this.maze, this.coins);
-        this.running = true;
+        this.running = running;
 
         
     }
@@ -38,7 +38,8 @@ class Game{
 
     die(){
         this.running = false;
-        console.log("You Lose");
+        $('#newgame').show();
+        $('.light').show();
     }
 }
 
@@ -58,8 +59,23 @@ function keyPressed(){
 
 }
 
+function keyTyped(){
+    if (key === 'A' || key ==='a'){
+        keymove[0] = true;
+    }
+    if (key === 'D' || key ==='d'){
+        keymove[0] = true;
+    }
+    if (key === 'S' || key ==='s'){
+        keymove[0] = true;
+    }
+    if (key === 'Q' || key ==='q'){
+        keymove[0] = true;
+    }
+}
+
 function keyReleased(){
-    if (keyCode === UP_ARROW){
+    if (keyCode === UP_ARROW ){
         keymove[0] = false;
     }
     if (keyCode === RIGHT_ARROW){
