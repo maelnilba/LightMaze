@@ -10,6 +10,7 @@ class Player {
         this.maze = maze;
         this.coins = coins;
         this.stroke = 1500;
+        this.coins_ate = 0;
     }
 
     takeCoin(){
@@ -17,6 +18,7 @@ class Player {
             if (this.j === this.coins[c].j && this.i === this.coins[c].i){
                 this.coins.splice(c,1);
                 addCoins(this.coins);
+                this.coins_ate++;
                 this.stroke -= 100;
                 if (this.stroke < 1100){
                     this.stroke = 1100;

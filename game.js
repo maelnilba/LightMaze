@@ -8,8 +8,7 @@ class Game{
         this.coins = createCoins(this.coins, this.maze);
         this.player = new Player(this.maze, this.coins);
         this.running = running;
-
-        
+        this.score = this.player.coins_ate*100;
     }
 
 
@@ -19,6 +18,7 @@ class Game{
         this.player.show();
         this.player.showlight();
 
+        this.score = this.player.coins_ate*100;
         if (this.player.stroke > 2000){
             this.die();
         }
@@ -40,6 +40,7 @@ class Game{
         this.running = false;
         $('#newgame').show();
         $('.light').show();
+        $('#show_score').hide();
     }
 }
 
@@ -60,31 +61,31 @@ function keyPressed(){
 }
 
 function keyTyped(){
-    if (key === 'A' || key ==='a'){
+    if (key === 'Z' || key ==='z'){
         keymove[0] = true;
     }
     if (key === 'D' || key ==='d'){
-        keymove[0] = true;
+        keymove[1] = true;
     }
     if (key === 'S' || key ==='s'){
-        keymove[0] = true;
+        keymove[2] = true;
     }
     if (key === 'Q' || key ==='q'){
-        keymove[0] = true;
+        keymove[3] = true;
     }
 }
 
 function keyReleased(){
-    if (keyCode === UP_ARROW ){
+    if (keyCode === UP_ARROW || (key === 'Z' || key ==='z')){
         keymove[0] = false;
     }
-    if (keyCode === RIGHT_ARROW){
+    if (keyCode === RIGHT_ARROW || (key === 'D' || key ==='d')){
         keymove[1] = false;
     }
-    if (keyCode === DOWN_ARROW){
+    if (keyCode === DOWN_ARROW || (key === 'S' || key ==='s')){
         keymove[2] = false;
     }
-    if (keyCode === LEFT_ARROW){
+    if (keyCode === LEFT_ARROW || (key === 'Q' || key ==='q')) {
         keymove[3] = false;
     }
 }
