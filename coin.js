@@ -1,4 +1,3 @@
-
 var avaibleground = [];
 
 function createCoins(coins, maze){
@@ -36,8 +35,7 @@ class Coin{
     }
 
     show(){
-        fill('blue');
-        ellipseMode(CORNER);
-        ellipse(this.i*this.width,this.j*this.height,this.width,this.height);
+ 
+        image(coinimg,this.i*this.width,this.j*this.height,this.width,this.height);
     }
 }

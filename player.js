@@ -1,8 +1,10 @@
 
 class Player {
-    constructor(i,j, maze, coins){
-        this.i = i;
-        this.j = j;
+    
+    constructor(maze, coins){
+        this.rdn = random(avaibleground);
+        this.i = this.rdn.i;
+        this.j = this.rdn.j;
         this.width = 20;
         this.height = this.width;
         this.maze = maze;
@@ -82,7 +84,7 @@ class Player {
     }
 
     update(){
-        this.stroke = this.stroke + 2;
+        this.stroke = this.stroke + (1.5 + (2 - this.stroke/1000));
     }
     show(){
         fill('yellow');

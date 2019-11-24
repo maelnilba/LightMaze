@@ -3,12 +3,6 @@ var grid = [];
 var current;
 var stack = [];
 
-let groundimg;
-
-function preload(){
-    groundimg = loadImage('img/ground.jpg');
-}
-
 function removeWalls(a, b) {
     let x = a.i - b.i;
     if (x === 1) {
@@ -29,7 +23,7 @@ function removeWalls(a, b) {
 }
 
 
-function createMaze(maze){
+function createMaze(maze,start_x,start_y){
         // SETUP THE GRID
     for (let j = 0; j < rows;j++){
         let row = [];
@@ -49,7 +43,7 @@ function createMaze(maze){
     }
 
 
-    current = grid[0][0];
+    current = grid[start_x][start_y];
     current.visited = true;
 
     let total_visited;

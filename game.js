@@ -1,12 +1,12 @@
 var keymove = [false,false,false,false];
 
 class Game{
-    constructor(){
+    constructor(start_x,start_y){
         this.maze = [];
-        this.maze = createMaze(this.maze);
+        this.maze = createMaze(this.maze,start_x,start_y);
         this.coins = [];
         this.coins = createCoins(this.coins, this.maze);
-        this.player = new Player(1,1, this.maze, this.coins);
+        this.player = new Player(this.maze, this.coins);
         this.running = true;
 
         
