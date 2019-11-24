@@ -7,6 +7,7 @@ class Game{
         this.coins = [];
         this.coins = createCoins(this.coins, this.maze);
         this.player = new Player(1,1, this.maze, this.coins);
+        this.running = true;
 
         
     }
@@ -16,6 +17,11 @@ class Game{
         this.player.move(keymove);
         this.player.update();
         this.player.show();
+        this.player.showlight();
+
+        if (this.player.stroke > 2000){
+            this.die();
+        }
     }
 
     draw(){
@@ -28,6 +34,11 @@ class Game{
         for (let c = 0; c < this.coins.length; c++){
             this.coins[c].show();
         }
+    }
+
+    die(){
+        this.running = false;
+        console.log("You Lose");
     }
 }
 

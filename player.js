@@ -3,11 +3,11 @@ class Player {
     constructor(i,j, maze, coins){
         this.i = i;
         this.j = j;
-        this.width = windowWidth/80;
+        this.width = 20;
         this.height = this.width;
-        this.timer = 0;
         this.maze = maze;
         this.coins = coins;
+        this.stroke = 1500;
     }
 
     takeCoin(){
@@ -15,8 +15,10 @@ class Player {
             if (this.j === this.coins[c].j && this.i === this.coins[c].i){
                 this.coins.splice(c,1);
                 addCoins(this.coins);
-                this.timer = 200;
-                frameRate(60);
+                this.stroke -= 100;
+                if (this.stroke < 1100){
+                    this.stroke = 1100;
+                }
                 return true;
             }
         }
@@ -80,17 +82,19 @@ class Player {
     }
 
     update(){
-        if (this.timer > 0){
-           this.timer--; 
-        }
-        else {
-            frameRate(20);
-        }
-        
+        this.stroke = this.stroke + 2;
     }
     show(){
         fill('yellow');
+        strokeWeight(1);
         rect(this.i*this.width,this.j*this.height,this.width,this.height);
+    }
+
+    showlight(){
+        ellipseMode(CENTER);
+        noFill();
+        strokeWeight(this.stroke);
+        ellipse(this.i*this.width+this.width/2,this.j*this.height+this.height/2,2000,2000);
     }
 
 }

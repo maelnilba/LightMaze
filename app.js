@@ -12,9 +12,13 @@ function setup() {
 
 
 function draw(){
-background('rgba(255,255,255,0.5)');
-   game.run();
-   game.draw();
+background('rgba(0,0,0,0.5)');
+   
+if (game.running){
+        game.draw();
+        game.run();
+}
+
 
 
    

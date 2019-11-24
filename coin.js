@@ -31,7 +31,7 @@ class Coin{
     constructor(i,j){
         this.i = i;
         this.j = j;
-        this.width = windowWidth/80;
+        this.width = 20;
         this.height = this.width;
     }
 

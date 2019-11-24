@@ -3,6 +3,12 @@ var grid = [];
 var current;
 var stack = [];
 
+let groundimg;
+
+function preload(){
+    groundimg = loadImage('img/ground.jpg');
+}
+
 function removeWalls(a, b) {
     let x = a.i - b.i;
     if (x === 1) {
@@ -181,7 +187,7 @@ class Ground {
     constructor(i,j){
         this.i = i;
         this.j = j;
-        this.width = windowWidth/80;
+        this.width = 20;
         this.height = this.width;
         this.collision = false;
     }
@@ -189,8 +195,9 @@ class Ground {
 
     show(){
         if (this.collision){
-            fill(51);
-            rect(this.i*this.width,this.j*this.height,this.width,this.height);
+
+            image(groundimg, this.i*this.width,this.j*this.height,this.width,this.height);
+            strokeWeight(0);
         }
 
     }
