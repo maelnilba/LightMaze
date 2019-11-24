@@ -1,0 +1,7 @@
+* {
+    padding:0;
+    margin: 0;
+    border-style: border-box;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
