@@ -10,7 +10,7 @@ class Player {
         this.height = this.width;
         this.maze = maze;
         this.coins = coins;
-        this.stroke = 1500;
+        this.stroke = 1100;
         this.coins_ate = 0;
     }
 
@@ -89,7 +89,7 @@ class Player {
     }
 
     update(){
-        this.stroke = this.stroke + (1.5 + (2 - this.stroke/1000));
+        this.stroke = this.stroke + (2 + (2 - this.stroke/1000));
     }
     show(){
         strokeWeight(1);

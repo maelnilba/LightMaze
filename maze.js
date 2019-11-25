@@ -104,9 +104,119 @@ function createMaze(maze,start_x,start_y){
         }
     }
 
+    for (let j = 0; j < rows*3; j++){
+        for (let i = 0; i < cols*3; i++){
+            maze[j][i].img = ChooseImg(i,j,maze);
+        }
+    }
+    
+
+
+
+
+
     return maze;
 }
- 
+
+function ChooseImg(i,j,maze){
+
+    if (i === 0 && j === 0){
+        return 15;
+    }
+
+    if (i === 0 && j === (rows*3)-1){
+        return 14;
+    }
+
+    if (i === (cols*3)-1 && j === 0){
+        return 16;
+    }
+
+    if (i === (cols*3)-1 && j === (rows*3)-1){
+        return 13;
+    }
+
+    if (i > 0 && i < (cols*3)-1 && j > 0 && j < (rows*3)-1){  
+        var lt = maze[j-1][i-1].collision;
+        var ct = maze[j-1][i].collision;
+        var rt = maze[j-1][i+1].collision;
+        var lc = maze[j][i-1].collision;
+        var rc = maze[j][i+1].collision;
+        var lb = maze[j+1][i-1].collision;
+        var cb = maze[j+1][i].collision;
+        var rb = maze[j+1][i+1].collision;
+
+        /*   [lt][ct][rt]
+            [lc][cc][rc]
+            [lb][cb][rb]
+                       */
+
+        if (lt & ct & rt & lc & rc & lb & cb & rb){ 
+            return 0;
+        } 
+        if (lc & rc & cb && !ct ){
+            return 1;
+        }
+        if (ct && cb && lc && !rc){
+            return 2;
+        }
+        if (lc && rc && ct && !cb){
+            return 3;
+        }
+        if (ct && rc && cb && !lc){
+            return 4;
+        }
+        if (lc && cb && lc && !ct && !rc){
+            return 9;
+        }
+         if (lt && ct && lc && !rc && !cb){
+            return 10;
+        }
+         if (ct && rt && rc && !lc && !cb){
+            return 11;
+        }
+         if (rc && cb && rb && !lc && !ct){
+            return 12;    
+        } else {
+            return 0;
+        }
+
+    
+
+        /*   [lt][ct][rt]
+            [lc][cc][rc]
+            [lb][cb][rb]
+                       */
+    } else if (i === 0) {
+        var rc = maze[j][i+1].collision;
+        if (rc){
+            return 0;
+        } else {
+            return 2;
+        }
+    } else if (i === (cols*3)-1){
+        var lc = maze[j][i-1].collision;
+        if (lc){
+            return 0;
+        } else {
+            return 4;
+        }
+    } else if (j === 0 ){
+        var cb = maze[j+1][i].collision;
+        if (cb){
+            return 0;
+        } else {
+            return 3;
+        }
+    }  else if (j === (rows*3)-1){
+        var ct = maze[j-1][i].collision;
+        if (ct){
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+}
 
 
 
@@ -184,13 +294,14 @@ class Ground {
         this.width = 20;
         this.height = this.width;
         this.collision = false;
+        this.img = 0;
     }
 
 
     show(){
         if (this.collision){
 
-            image(groundimg, this.i*this.width,this.j*this.height,this.width,this.height);
+            image(groundimg[this.img], this.i*this.width,this.j*this.height,this.width,this.height);
             strokeWeight(0);
         }
 

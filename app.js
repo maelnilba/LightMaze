@@ -1,8 +1,9 @@
 var game;
-let coinimg, groundimg;
+let coinimg;
 let start_x, start_y;
 let high_score = 0;
 let moleimg = [];
+let groundimg = [];
 
 
 function preload(){
@@ -10,6 +11,9 @@ function preload(){
     groundimg = loadImage('img/ground.jpg');
     moleimg[0] = loadImage('img/mole2.png');
     moleimg[1] = loadImage('img/mole1.png');
+    for (let i = 0; i < 18;i++){
+        groundimg[i] = loadImage('img/ground'+i+'.png');
+    }
 }
 
 function setup() {
@@ -53,6 +57,7 @@ function LaunchGame(){
     $('.light').hide();
     $('#bgimg').hide();
     $('#show_score').show();
+    // $('#body').css('background','#693b2a');
 
 }
 
