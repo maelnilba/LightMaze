@@ -5,6 +5,7 @@ class Player {
         this.rdn = random(avaibleground);
         this.i = this.rdn.i;
         this.j = this.rdn.j;
+        this.img = 0;
         this.width = 20;
         this.height = this.width;
         this.maze = maze;
@@ -58,12 +59,14 @@ class Player {
             }
             else if (dir === 2 && this.should_not_collide(2)) {
                 this.i+= 1;
+                this.img = 0;
             }
             else if (dir === 3 && this.should_not_collide(3)) {
                 this.j+= 1;
             }
             else if (dir === 4 && this.should_not_collide(4)) {
                 this.i-= 1;
+                this.img = 1;
             }
 
             this.takeCoin();
@@ -89,9 +92,8 @@ class Player {
         this.stroke = this.stroke + (1.5 + (2 - this.stroke/1000));
     }
     show(){
-        fill('yellow');
         strokeWeight(1);
-        rect(this.i*this.width,this.j*this.height,this.width,this.height);
+        image(moleimg[this.img],this.i*this.width,this.j*this.height,this.width,this.height);
     }
 
     showlight(){

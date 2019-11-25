@@ -40,6 +40,7 @@ class Game{
         this.running = false;
         $('#newgame').show();
         $('.light').show();
+        $('#bgimg').show();
         $('#show_score').hide();
     }
 }

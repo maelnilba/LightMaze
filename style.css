@@ -4,8 +4,17 @@
     border-style: border-box;
     overflow-y: hidden;
     overflow-x: hidden;
-    background-color: black;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background:black;
+}
+
+#bgimg {
+    position: absolute;
+    top:20%;
+    left:5%;
 }
 
 canvas {
@@ -30,9 +39,23 @@ canvas {
     font-size: 172px;
 }
 
+
+
 .newgame #score {
     font-size: 32px;
+    
 }
+
+.newgame #score:nth-child(1) {
+    font-size: 32px;
+    
+}
+
+.newgame #score:nth-child(2) {
+    font-size: 32px;
+  
+}
+
 
 
 
@@ -41,9 +64,6 @@ canvas {
     height:10vh;
     border-radius: 14px;
     border-color: transparent;
-    background-color: rgb(245, 252, 253);
-    color: black;
-    font-size: 24px;
     outline: none;
     position: relative;
     opacity: 0;
@@ -57,7 +77,7 @@ canvas {
     border-color: transparent;
     background-color: rgb(245, 252, 253);
     color: black;
-    font-size: 24px;
+    font-size: 1.5vw;
     outline: none;
     position: absolute;
     bottom:5vh;
