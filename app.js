@@ -4,6 +4,7 @@ let start_x, start_y;
 let high_score = 0;
 let moleimg = [];
 let groundimg = [];
+let song, coinsfx, diesfx;
 
 
 function preload(){
@@ -14,6 +15,9 @@ function preload(){
     for (let i = 0; i < 18;i++){
         groundimg[i] = loadImage('img/ground'+i+'.png');
     }
+    song = loadSound('sound/gamesound.mp3');
+    coinsfx = loadSound('sound/coinsound.mp3');
+    diesfx = loadSound('sound/diesound.mp3');
 }
 
 function setup() {
@@ -36,6 +40,9 @@ function draw(){
 background('rgba(0,0,0,0.5)');
    
 if (game.running){
+        if (!(song.isPlaying())){
+            song.play();
+        }
         game.draw();
         game.run();
         show_score.html("Score : " +game.score); 
@@ -48,6 +55,12 @@ if (game.running){
 high_score = Highscored(game.score,high_score);
 score.html("Your score is : " + game.score);
 highscore.html("Your highscore is : " + high_score);
+
+if (!focused){
+    song.pause();
+} else if (song.isPaused()) {
+    song.play();
+}
 
    
 }
@@ -62,6 +75,7 @@ function LaunchGame(){
     $('.light').hide();
     $('#bgimg').hide();
     $('#show_score').show();
+    song.play();
     // $('#body').css('background','#693b2a');
 
 }

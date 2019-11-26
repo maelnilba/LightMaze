@@ -20,6 +20,7 @@ class Player {
                 this.coins.splice(c,1);
                 addCoins(this.coins);
                 this.coins_ate++;
+                coinsfx.play();
                 this.stroke -= 150;
                 if (this.stroke < 1100){
                     this.stroke = 1100;

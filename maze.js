@@ -24,6 +24,9 @@ function removeWalls(a, b) {
 
 
 function createMaze(maze,start_x,start_y){
+
+    grid = [];
+    stack = [];
         // SETUP THE GRID
     for (let j = 0; j < rows;j++){
         let row = [];

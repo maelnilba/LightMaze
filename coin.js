@@ -1,7 +1,7 @@
 var avaibleground = [];
 
 function createCoins(coins, maze){
-
+    avaibleground = [];
     for (let j = 0; j < rows*3; j++){
         for (let i = 0; i < cols*3; i++){
             if (!maze[j][i].collision){

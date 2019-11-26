@@ -3,8 +3,10 @@ var keymove = [false,false,false,false];
 class Game{
     constructor(start_x,start_y,running, demo = false){
         this.demo = demo;
+        this.start_x = start_x;
+        this.start_y = start_y;
         this.maze = [];
-        this.maze = createMaze(this.maze,start_x,start_y);
+        this.maze = createMaze(this.maze,this.start_x,this.start_y);
         this.coins = [];
         this.coins = createCoins(this.coins, this.maze);
         this.player = new Player(this.maze, this.coins);
@@ -19,6 +21,7 @@ class Game{
 
             this.score = this.player.coins_ate*100;
             if (this.player.stroke > 2000){
+                diesfx.play();
                 this.die();
             }  
         }
@@ -43,6 +46,7 @@ class Game{
         $('.light').show();
         $('#bgimg').show();
         $('#show_score').hide();
+        song.stop();
     }
 
     update_player(){
