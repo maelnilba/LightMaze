@@ -175,45 +175,94 @@ function ChooseImg(i,j,maze){
         }
          if (rc && cb && rb && !lc && !ct){
             return 12;    
-        } else {
-            return 0;
+        } 
+         if (lc && ct && rc && cb && !lb && !rt){
+            return 6;
         }
-
+         if (lc && ct && rc && cb && !lt && !rb){
+             return 5;
+        }
+         if (lc && ct && !lt){
+             return 13;
+        }
+         if (ct && rc && !rt){
+             return 14;
+        }
+         if (rc && cb && !rb){
+             return 15;
+        }
+         if (lc && cb && !lb){
+             return 16;
+        } else {
+             return 0;
+        }
     
-
         /*   [lt][ct][rt]
             [lc][cc][rc]
             [lb][cb][rb]
                        */
     } else if (i === 0) {
         var rc = maze[j][i+1].collision;
-        if (rc){
-            return 0;
-        } else {
+        var rt = maze[j-1][i+1].collision;
+        var rb = maze[j+1][i+1].collision;
+      
+        if (rc && rt && !rb){
+            return 15;
+        }
+        if (rc && rb && !rt){
+            return 14;
+        }
+        else {
             return 2;
         }
     } else if (i === (cols*3)-1){
         var lc = maze[j][i-1].collision;
-        if (lc){
-            return 0;
-        } else {
+        var lt = maze[j-1][i-1].collision;
+        var lb = maze[j+1][i-1].collision;
+
+       
+        if (lc && lt && !lb ){
+            return 16;
+        }
+        if (lc && lb && !lt){
+            return 13;
+        }
+        else {
             return 4;
         }
     } else if (j === 0 ){
         var cb = maze[j+1][i].collision;
-        if (cb){
-            return 0;
-        } else {
+        var lb = maze[j+1][i-1].collision;
+        var rb = maze[j+1][i+1].collision;
+
+        if (cb && rb && !lb){
+            return 16;
+        }
+        if (cb && lb && !rb){
+            return 15;
+        }
+        else {
             return 3;
         }
     }  else if (j === (rows*3)-1){
         var ct = maze[j-1][i].collision;
-        if (ct){
-            return 0;
-        } else {
+        var lt = maze[j-1][i-1].collision;
+        var rt = maze[j-1][i+1].collision;
+
+        if (ct && rt && !lt){
+            return 13;
+        }
+        if (ct && lt && !rt){
+            return 14;
+        }
+        else {
             return 1;
         }
     }
+      /*   [lt][ct][rt]
+            [lc][cc][rc]
+            [lb][cb][rb]
+                       */
 }
 
 
