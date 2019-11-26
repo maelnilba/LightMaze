@@ -43,7 +43,6 @@ class Game{
         $('.light').show();
         $('#bgimg').show();
         $('#show_score').hide();
-        HoldingGame();
     }
 
     update_player(){

@@ -110,11 +110,6 @@ function createMaze(maze,start_x,start_y){
         }
     }
     
-
-
-
-
-
     return maze;
 }
 

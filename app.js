@@ -17,7 +17,8 @@ function preload(){
 }
 
 function setup() {
-    HoldingGame();
+    holdgame =  new Game(0,0,true,true);
+    game =  new Game(0,0,false,false);
     mazecanvas = createCanvas((cols*3)*20,(rows*3)*20);
     mazecanvas.parent('sketch');
     score = createP();
@@ -37,10 +38,11 @@ background('rgba(0,0,0,0.5)');
 if (game.running){
         game.draw();
         game.run();
-        if (!game.demo){
-           show_score.html("Score : " +game.score); 
-        }
+        show_score.html("Score : " +game.score); 
+
         
+} else {
+    holdgame.draw();
 }
 
 high_score = Highscored(game.score,high_score);
@@ -64,11 +66,7 @@ function LaunchGame(){
 
 }
 
-function HoldingGame(){
-    start_x = floor(random(0,rows));
-    start_y = floor(random(0,cols));
-    game = new Game(start_x,start_y,true,true);
-}
+
 
 function Highscored(act_score,act_highscore){
     if (act_score > act_highscore){
