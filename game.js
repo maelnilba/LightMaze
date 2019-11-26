@@ -13,10 +13,7 @@ class Game{
 
 
     run(){
-        this.player.move(keymove);
-        this.player.update();
-        this.player.show();
-        this.player.showlight();
+        this.update_player();
 
         this.score = this.player.coins_ate*100;
         if (this.player.stroke > 2000){
@@ -42,6 +39,13 @@ class Game{
         $('.light').show();
         $('#bgimg').show();
         $('#show_score').hide();
+    }
+
+    update_player(){
+        this.player.move(keymove);
+        this.player.update();
+        this.player.show();
+        this.player.showlight();
     }
 }
 
