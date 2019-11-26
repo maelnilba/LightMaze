@@ -63,7 +63,7 @@ canvas {
 
 .newgame input[type=submit]#launcher {
     width:10vw;
-    height:10vh;
+    height:80px;
     border-radius: 14px;
     border-color: transparent;
     outline: none;
@@ -74,7 +74,7 @@ canvas {
 
 .newgame input[type=submit]#fakelauncher {
     width:10vw;
-    height:10vh;
+    height:80px;
     border-radius: 14px;
     border-color: transparent;
     background-color: rgb(245, 252, 253);
@@ -82,7 +82,7 @@ canvas {
     font-size: 1.5vw;
     outline: none;
     position: absolute;
-    bottom:5vh;
+    bottom:80px;
     left:45vw;
 }
 
