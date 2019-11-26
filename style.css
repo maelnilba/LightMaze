@@ -43,6 +43,7 @@ canvas {
     margin-top: 10vh;
     color:yellow;
     font-size: 172px;
+    text-shadow: #000 10px 0 5px;
 }
 
 
@@ -93,6 +94,7 @@ canvas {
 
 .newgame input[type=submit]#launcher:active ~ #fakelauncher {
     background-color: rgb(0, 0, 0);
+    opacity:0;
     color: black;
     outline: none;
 }

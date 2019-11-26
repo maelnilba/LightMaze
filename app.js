@@ -17,7 +17,7 @@ function preload(){
 }
 
 function setup() {
-    game = new Game(0,0,false)
+    HoldingGame();
     mazecanvas = createCanvas((cols*3)*20,(rows*3)*20);
     mazecanvas.parent('sketch');
     score = createP();
@@ -37,7 +37,10 @@ background('rgba(0,0,0,0.5)');
 if (game.running){
         game.draw();
         game.run();
-        show_score.html("Score : " +game.score);
+        if (!game.demo){
+           show_score.html("Score : " +game.score); 
+        }
+        
 }
 
 high_score = Highscored(game.score,high_score);
@@ -59,6 +62,12 @@ function LaunchGame(){
     $('#show_score').show();
     // $('#body').css('background','#693b2a');
 
+}
+
+function HoldingGame(){
+    start_x = floor(random(0,rows));
+    start_y = floor(random(0,cols));
+    game = new Game(start_x,start_y,true,true);
 }
 
 function Highscored(act_score,act_highscore){
