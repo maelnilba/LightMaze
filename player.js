@@ -90,7 +90,7 @@ class Player {
     }
 
     update(){
-        this.stroke = this.stroke + (2 + (2 - this.stroke/1000));
+        this.stroke = this.stroke + (2 + (2 - this.stroke/1000)) + (this.coins_ate/20);
     }
     show(){
         strokeWeight(1);
