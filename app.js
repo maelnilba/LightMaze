@@ -55,14 +55,7 @@ if (game.running){
 high_score = Highscored(game.score,high_score);
 score.html("Your score is : " + game.score);
 highscore.html("Your highscore is : " + high_score);
-
-if (!focused){
-    song.pause();
-} else if (song.isPaused()) {
-    song.play();
-}
-
-   
+ 
 }
 
 
