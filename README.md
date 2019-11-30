@@ -1,2 +1,2 @@
 # LigthMaze
-A small game with P5
+A small game using P5
